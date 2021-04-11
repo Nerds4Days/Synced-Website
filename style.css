@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* Variables */
+:root {
+	--dark-color: #090f10;
+	--primary-color: #860d26;
+	--dark-primary: #4d0917;
+}
+
+/* Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Element Styling */
+body {
+	padding: 1.75rem;
+	background: var(--dark-color);
+	color: #fff;
+	font-family: 'Roboto', 'Arial', 'Sans-Serif';
+}
+
+/* Utility Classes */
+.container {
+	max-width: 1100px;
+	margin: auto;
+}
+
+.btn {
+	border: none;
+	cursor: pointer;
+	background: var(--primary-color);
+	color: #fff;
+	padding: 0.75rem 2rem;
+	font-size: 1.1rem;
+	transition: 0.4s all ease;
+}
+
+.btn:hover {
+	background: var(--dark-primary);
+}
+
+.btn:focus {
+	outline: none;
+}
+
+/* Styling */
+.video-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	position: relative;
+}
+
+.controls,
+.video-container video {
+	width: 100%;
+}
+
+.video-container .controls {
+	position: absolute;
+	bottom: 0;
+	width: 100%; /* 100% minus horizontal padding of container */
+	display: flex;
+	padding: 1rem 0.75rem;
+	align-items: center;
+	background: linear-gradient(0, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+	transition: all 0.4s ease;
+
+	opacity: 0;
+}
+
+.video-container video:hover + .controls,
+.video-container .controls:hover {
+	opacity: 1;
+}
+
+.video-container .slider {
+	flex: 1;
+	height: 20px;
+	display: flex;
+	align-items: center;
+	margin-right: 0.5rem;
+	position: relative;
+}
+
+/* Buttons */
+.video-container i {
+	margin-right: 1rem;
+	cursor: pointer;
+	transform: scale(0.9);
+}
+
+/* Slider */
+.video-container .bar {
+	width: 100%;
+	height: 5px;
+	background: cornflowerblue;
+	cursor: pointer;
+}
+
+.video-container .slider-btn {
+	width: 5px;
+	height: 20px;
+	background: #fff;
+	position: absolute;
+	left: -2.5px;
+	cursor: pointer;
+}
+
+/* Overlay */
+.video-container .overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 10;
+	display: grid;
+	place-items: center;
+}
