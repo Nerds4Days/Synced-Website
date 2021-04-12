@@ -11,10 +11,29 @@ app.get('/music.mp4', (req, res) => res.sendFile(__dirname + '/music.mp4'));
 app.get('/style.css', (req, res) => res.sendFile(__dirname + '/style.css'));
 app.get('/frontend.js', (req, res) => res.sendFile(__dirname + '/frontend.js'));
 
+
 io.on('connection', socket => {
 	console.log('A user connected');
+
+	socket.on("RequestTime", function(someShit){
+		let srvSockets = io.sockets.sockets;
+		console.log(Object.keys(srvSockets));
+		
+		socket.broadcast.to(Object.keys(srvSockets)[0]).emit("GiveTimeToServer", "Some Shit");
+	});
+	
+	socket.on("TimeIs", function(data){
+		let srvSockets = io.sockets.sockets;
+		console.log(Object.keys(srvSockets));
+		
+		socket.broadcast.to(Object.keys(srvSockets)[Object.keys(srvSockets).length - 1]).emit("GetTimeFromServer", data);
+		// io.emit("GetTimeFromServer", data);
+	});
+	
+
 	socket.on('disconnect', () => console.log('user disconnected'));
 });
+
 
 io.on('connection', socket => {
 	console.log('event happening');

@@ -26,6 +26,7 @@ window.addEventListener('resize', changeSliderBtnPos);
 document.querySelector('.join').addEventListener('click', () => {
 	document.querySelector('.overlay').style.display = 'none';
 	video.src = VIDEO_SRC;
+	socket.emit("RequestTime", "Requesting Time");
 });
 
 // UI FUNCTIONS
@@ -119,4 +120,17 @@ socket.on('event', action => {
 		default:
 			return action;
 	}
+});
+
+
+socket.on("GiveTimeToServer", function(SomeRandomShit){
+	console.log("This Works");
+	socket.emit("TimeIs", video.currentTime);
+});
+
+socket.on("GetTimeFromServer", function(data){
+	video.currentTime = data + 0.2;
+	video.play();
+	pBtn.classList.add('fa-pause');
+	pBtn.classList.remove('fa-play');
 });
