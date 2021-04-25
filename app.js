@@ -1,41 +1,73 @@
-const app = require('express')();
+const express = require('express');
+const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
+const path = require('path');
 
+const newUserIds = [];
+const adminIds = [];
+const messages = [];
+
+// Use static folder 'public' for sending files
+app.use(express.static(path.join(__dirname, 'public')));
+// Start server on port 3000
 http.listen(3000, () => console.log('listening on *:3000'));
 
-app.get('/', (req, res) => res.sendFile(__dirname + '/index.html'));
-
-app.get('/music.mp4', (req, res) => res.sendFile(__dirname + '/music.mp4'));
-
-app.get('/style.css', (req, res) => res.sendFile(__dirname + '/style.css'));
-app.get('/frontend.js', (req, res) => res.sendFile(__dirname + '/frontend.js'));
-
-
+// Handle on socket connection
 io.on('connection', socket => {
 	console.log('A user connected');
 
-	socket.on("RequestTime", function(someShit){
-		let srvSockets = io.sockets.sockets;
-		console.log(Object.keys(srvSockets));
-		
-		socket.broadcast.to(Object.keys(srvSockets)[0]).emit("GiveTimeToServer", "Some Shit");
+	// Add all users to room
+	socket.join('UserRoom');
+
+	// If Admin has Joined, Add him to the Admin's room
+	socket.on('AdminHasJoined', () => {
+		adminIds.push(socket.id);
 	});
-	
-	socket.on("TimeIs", function(data){
-		let srvSockets = io.sockets.sockets;
-		console.log(Object.keys(srvSockets));
-		
-		socket.broadcast.to(Object.keys(srvSockets)[Object.keys(srvSockets).length - 1]).emit("GetTimeFromServer", data);
-		// io.emit("GetTimeFromServer", data);
+
+	// When event occurs, emit event to all users
+	socket.on('event', action => io.emit('event', action));
+
+	//  When user requests time, emit an event to the admin (oldest user) to return the current synced time
+	socket.on('RequestTime', () => {
+		const srvSockets = [];
+		// Add to new users who joined
+		newUserIds.push(socket.id);
+
+		// Get all client Ids
+		for ([id, socketInfo] of io.in('UserRoom').adapter.nsp.sockets)
+			srvSockets.push(id);
+
+		const firstAdminId = adminIds[0];
+
+		console.log(firstAdminId);
+
+		if (firstAdminId) {
+			// Brotcast to Admin
+			socket.broadcast.to(firstAdminId).emit('GiveTimeToServer');
+		} else {
+			// Broadcast to first user to return current synced time
+			socket.broadcast.to(srvSockets[0]).emit('GiveTimeToServer');
+		}
 	});
-	
+
+	// When you get the time from the oldest user, broadcast the time to all the users who clicked join
+	socket.on('GotSyncedTime', videoInfo => {
+		newUserIds.forEach(id => {
+			socket.broadcast.to(id).emit('GotTimeFromServer', videoInfo);
+		});
+		newUserIds.length = 0;
+	});
+
+	// Listen for chat Message:
+	socket.on('chatMessage', msg => {
+		messages.push(msg);
+		io.emit('message', msg);
+	});
+
+	socket.on('getMessages', () => {
+		socket.emit('recieveMessages', messages);
+	});
 
 	socket.on('disconnect', () => console.log('user disconnected'));
-});
-
-
-io.on('connection', socket => {
-	console.log('event happening');
-	socket.on('event', action => io.emit('event', action));
 });
