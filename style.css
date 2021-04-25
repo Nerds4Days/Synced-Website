@@ -16,7 +16,6 @@
 
 /* Element Styling */
 body {
-	padding: 1.75rem;
 	background: var(--dark-color);
 	color: #fff;
 	font-family: 'Roboto', 'Arial', 'Sans-Serif';
@@ -38,7 +37,7 @@ body {
 	transition: 0.4s all ease;
 }
 
-.btn:hover {
+.btn:not(.btn-disabled):hover {
 	background: var(--dark-primary);
 }
 
@@ -46,14 +45,50 @@ body {
 	outline: none;
 }
 
+.btn-block {
+	display: block;
+	width: 100%;
+}
+
+.btn-disabled {
+	cursor: not-allowed;
+	background: lightgray;
+	color: gray;
+}
+
+.input {
+	padding: 0.5rem;
+	outline: none;
+	font-size: 1rem;
+	border: none;
+}
+
+.danger-input {
+	background: #ed4337;
+}
+.danger-input::placeholder {
+	color: #fff;
+}
+
+.label {
+	font-size: 1.2rem;
+}
+
+.my-S {
+	margin: 1rem 0;
+}
+
+.my-XS {
+	margin: 0.6rem 0;
+}
+
 /* Styling */
 .video-container {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
 	position: relative;
+	margin: 2rem;
+	max-width: 70%;
 }
 
 .controls,
@@ -64,7 +99,7 @@ body {
 .video-container .controls {
 	position: absolute;
 	bottom: 0;
-	width: 100%; /* 100% minus horizontal padding of container */
+	width: 100%;
 	display: flex;
 	padding: 1rem 0.75rem;
 	align-items: center;
@@ -95,6 +130,11 @@ body {
 	transform: scale(0.9);
 }
 
+.video-container .fa-expand {
+	margin-right: 0.5rem;
+	margin-left: 1rem;
+}
+
 /* Slider */
 .video-container .bar {
 	width: 100%;
@@ -121,6 +161,80 @@ body {
 	left: 0;
 	background: rgba(0, 0, 0, 0.5);
 	z-index: 10;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.overlay .user-join-container {
 	display: grid;
 	place-items: center;
+}
+
+.admin-join-container {
+	position: absolute;
+	bottom: 1rem;
+	left: 1rem;
+	display: flex;
+	align-items: center;
+}
+
+.admin-join {
+	padding: 0.5rem 1rem;
+	font-size: 0.9rem;
+}
+
+.admin-input {
+	padding: 0.3rem 0.5rem;
+	margin-left: 0.5rem;
+	visibility: hidden;
+}
+
+/* Chat Styling */
+.chat-container {
+	padding: 1.75rem;
+	background: #222;
+	height: 100vh;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 25%;
+}
+
+.messages-container {
+	height: 80%;
+	overflow-y: auto;
+	overflow-x: hidden;
+	word-wrap: break-word;
+}
+
+.message-form {
+	height: 20%;
+}
+
+.message-input {
+	width: 100%;
+	background: #333;
+	color: #fff;
+}
+
+.message-container.sender {
+	text-align: right;
+	margin-right: 0.5rem;
+}
+
+.message-container .message-username {
+	color: #ddd;
+	margin-bottom: 0.2rem;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 767px) {
+	.video-container {
+		width: 100%;
+	}
+	.chat-container {
+		width: 100%;
+		position: relative;
+	}
 }
