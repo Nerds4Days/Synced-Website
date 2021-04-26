@@ -9,7 +9,10 @@ const adminIds = [];
 const messages = [];
 
 // Use static folder 'public' for sending files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'index.html')));
+app.use(express.static(path.join(__dirname, 'frontend.js')));
+app.use(express.static(path.join(__dirname, 'style.css')));
+
 // Start server on port 3000
 http.listen(3000, () => console.log('listening on *:3000'));
 
