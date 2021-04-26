@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const PORT = process.env.PORT || 3000;
 
 // Start server on port 3000
-http..listen(PORT, () => console.log(`listening on ${PORT}`));
+http.listen(PORT, () => console.log(`listening on ${PORT}`));
 
 // Handle on socket connection
 io.on('connection', socket => {
