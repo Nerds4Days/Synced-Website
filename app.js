@@ -11,8 +11,10 @@ const messages = [];
 // Use static folder 'public' for sending files
 app.use(express.static(path.join(__dirname, 'public')));
 
+const PORT = process.env.PORT || 3000;
+
 // Start server on port 3000
-http..listen(process.env.PORT || 3000, () => console.log('listening on *:3000 maybe"));
+http..listen(PORT, () => console.log(`listening on ${PORT}`));
 
 // Handle on socket connection
 io.on('connection', socket => {
