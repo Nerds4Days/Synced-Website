@@ -9,7 +9,7 @@ const bar = document.querySelector('.bar');
 const barContainer = document.querySelector('.slider');
 const sliderBtn = document.querySelector('.slider-btn');
 // GLOBAL VARIABLES
- const VIDEO_SRC = './music.mp4';
+ const VIDEO_SRC = 'https://icecube-eu-291.icedrive.io/download?p=R3tXHIsqpsSAY4HNPCCn5i8TM%2F%2Bqxqcaiekj4pjk7NvkYN%2FQEv%2Bioz7ZLN2A30oJnQ7vzqHowN6RG0C0R8ppOf%2Fkn05VRCmfKoNWK%2FkjNhYYO0ItQBhdiCRbZGGp9FtWSD1pgdexXNFyKEfK6FQJBPsZY8%2FwzSerz%2FIC5d4na4gZBGHyjCRUIZ47W0O1DV3WL9%2FQSJk1nsnQxU3mmwb4b3P6L%2BOjlqQ4HH7dkr3MNn2UscSVSiwo7TcDQ352Le2j';
 const ADMINPIN = '555';
 let isFullScreen = false;
 let username;
