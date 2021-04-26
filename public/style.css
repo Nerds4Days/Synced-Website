@@ -221,6 +221,7 @@ body {
 .message-container.sender {
 	text-align: right;
 	margin-right: 0.5rem;
+	color: cyan;
 }
 
 .message-container .message-username {
