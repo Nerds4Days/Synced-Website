@@ -66,13 +66,18 @@ function handleTimeChange() {
 		pBtn.classList.add('fa-play');
 	}
 
-	// Calculate minutes and seconds and set in time value container in UI
-	let minutes = String(Math.floor((video.currentTime / 60) % 10));
-	let seconds = String(Math.floor(video.currentTime % 60));
-	if (minutes.length == 1) minutes = '0' + minutes;
-	if (seconds.length == 1) seconds = '0' + seconds;
+	let time = video.currentTime;
 
-	document.querySelector('.time').innerHTML = `${minutes}:${seconds}`;
+	// Calculate minutes and seconds and set in time value container in UI
+	let hours = ~~(time / 3600);
+	let minutes = ~~((time % 3600) / 60);
+	let seconds = ~~time % 60;
+
+	if (String(hours).length == 1) hours = '0' + hours;
+	if (String(minutes).length == 1) minutes = '0' + minutes;
+	if (String(seconds).length == 1) seconds = '0' + seconds;
+
+	document.querySelector('.time').innerHTML = `${hours}:${minutes}:${seconds}`;
 
 	// Move slider button because time changed
 	changeSliderBtnPos();
