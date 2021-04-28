@@ -10,14 +10,12 @@ const messages = [];
 
 // Use static folder 'public' for sending files
 app.use(express.static(path.join(__dirname, 'public')));
-
-const PORT = process.env.PORT || 3000;
-
 // Start server on port 3000
-http.listen(PORT, () => console.log(`listening on ${PORT}`));
+http.listen(3000, () => console.log('listening on *:3000'));
 
 // Handle on socket connection
 io.on('connection', socket => {
+	io.emit('UserJoined', "A User Has Joined!");
 	console.log('A user connected');
 
 	// Add all users to room
@@ -74,4 +72,3 @@ io.on('connection', socket => {
 
 	socket.on('disconnect', () => console.log('user disconnected'));
 });
-
