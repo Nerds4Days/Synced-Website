@@ -229,6 +229,14 @@ body {
 	margin-bottom: 0.2rem;
 }
 
+.server-message {
+	font-size: 1.5rem;
+	font-style: italic;
+	color: #FF0000;
+	opacity: 0.7;
+	text-align: center;
+}
+
 /* MEDIA QUERIES */
 @media (max-width: 767px) {
 	.video-container {
@@ -239,4 +247,3 @@ body {
 		position: relative;
 	}
 }
-
