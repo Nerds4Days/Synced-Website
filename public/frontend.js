@@ -9,7 +9,8 @@ const bar = document.querySelector('.bar');
 const barContainer = document.querySelector('.slider');
 const sliderBtn = document.querySelector('.slider-btn');
 // GLOBAL VARIABLES
- const VIDEO_SRC = 'https://icecube-eu-308.icedrive.io/download?p=kc3xXWFiEQ4C%2FkkobqK%2Brioh2fUdrXAACye3eIuK%2Fhr%2F%2BQCcxwpj3wbAw7U0EQ7vTLGkaea1J3G8NB7XL%2Bu0k0BoEZou37rULmgy5chA%2FvO2uM8eg2t%2Fwae8%2FGJB9sFLw0xSfzs%2F4bkuJvfRrWokcFTZ%2Bf1Pxv%2F5QHSFxDuAfoDQgIUyRQPsRvGoPSg6vEFUc%2Ba4bAB5ihkS1m10saj0kQXjhVfHfL9LlRK7O0pyDgBYMCPZ2fkxD5nt5SQSW%2F6CttBhNZYBb53jeK3sXZhU91NAWRzHuzju%2BGRxsqajGhM%3D';
+const VIDEO_SRC =
+	'https://icecube-eu-308.icedrive.io/download?p=kc3xXWFiEQ4C%2FkkobqK%2Brioh2fUdrXAACye3eIuK%2Fhr%2F%2BQCcxwpj3wbAw7U0EQ7vTLGkaea1J3G8NB7XL%2Bu0k0BoEZou37rULmgy5chA%2FvO2uM8eg2t%2Fwae8%2FGJB9sFLw0xSfzs%2F4bkuJvfRrWokcFTZ%2Bf1Pxv%2F5QHSFxDuAfoDQgIUyRQPsRvGoPSg6vEFUc%2Ba4bAB5ihkS1m10saj0kQXjhVfHfL9LlRK7O0pyDgBYMCPZ2fkxD5nt5SQSW%2F6CttBhNZYBb53jeK3sXZhU91NAWRzHuzju%2BGRxsqajGhM%3D';
 const ADMINPIN = '555';
 let isFullScreen = false;
 let username;
@@ -77,7 +78,9 @@ function handleTimeChange() {
 	if (String(minutes).length == 1) minutes = '0' + minutes;
 	if (String(seconds).length == 1) seconds = '0' + seconds;
 
-	document.querySelector('.time').innerHTML = `${hours}:${minutes}:${seconds}`;
+	document.querySelector(
+		'.time'
+	).innerHTML = `${hours}:${minutes}:${seconds}`;
 
 	// Move slider button because time changed
 	changeSliderBtnPos();
@@ -165,8 +168,6 @@ function handleJoin() {
 
 	document.querySelector('.overlay').style.display = 'none';
 	video.src = VIDEO_SRC;
-
-
 
 	initChat();
 	// Request current synced time from server
@@ -269,12 +270,11 @@ socket.on('message', messageInfo => outputMessage(messageInfo));
 function outputMessage(messageInfo) {
 	const messagesContainer = document.querySelector('.messages-container');
 	const div = document.createElement('div');
-	
+
 	messagesContainer.scrollTop = messagesContainer.scrollHeight;
 	div.classList.add('message-container', 'my-XS');
 	messageInfo.username === username && div.classList.add('sender');
-	div.innerHTML = 
-			`<small class="message-username">${messageInfo.username}</small>
+	div.innerHTML = `<small class="message-username">${messageInfo.username}</small>
 			<p class="message">${messageInfo.message}</p>`;
 
 	messagesContainer.appendChild(div);
@@ -288,20 +288,15 @@ socket.on('recieveMessages', messages =>
 	messages.forEach(msg => outputMessage(msg))
 );
 
-
-
-socket.on('UserJoined', message =>
-	OutputServerMessage(message)
-);
+socket.on('UserJoined', message => OutputServerMessage(message));
 
 function OutputServerMessage(msg) {
 	const messagesContainer = document.querySelector('.messages-container');
 	const div = document.createElement('div');
-	
+
 	messagesContainer.scrollTop = messagesContainer.scrollHeight;
 	div.classList.add('message-container', 'my-XS');
-	div.innerHTML = 
-			`<p class="message server-message">${msg}</p>`;
+	div.innerHTML = `<p class="message server-message">${msg}</p>`;
 
 	messagesContainer.appendChild(div);
 }

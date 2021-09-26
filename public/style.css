@@ -86,6 +86,8 @@ body {
 .video-container {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	position: relative;
 	margin: 2rem;
 	max-width: 70%;
@@ -109,7 +111,6 @@ body {
 	opacity: 0;
 }
 
-.video-container video:hover + .controls,
 .video-container .controls:hover {
 	opacity: 1;
 }
@@ -232,7 +233,7 @@ body {
 .server-message {
 	font-size: 1.5rem;
 	font-style: italic;
-	color: #FF0000;
+	color: #ff0000;
 	opacity: 0.7;
 	text-align: center;
 }
@@ -247,4 +248,3 @@ body {
 		position: relative;
 	}
 }
-
