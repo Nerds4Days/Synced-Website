@@ -10,7 +10,8 @@ const barContainer = document.querySelector('.slider');
 const sliderBtn = document.querySelector('.slider-btn');
 // GLOBAL VARIABLES
 const VIDEO_SRC =
-	'https://icecube-eu-308.icedrive.io/download?p=kc3xXWFiEQ4C%2FkkobqK%2Brioh2fUdrXAACye3eIuK%2Fhr%2F%2BQCcxwpj3wbAw7U0EQ7vTLGkaea1J3G8NB7XL%2Bu0k0BoEZou37rULmgy5chA%2FvO2uM8eg2t%2Fwae8%2FGJB9sFLw0xSfzs%2F4bkuJvfRrWokcFTZ%2Bf1Pxv%2F5QHSFxDuAfoDQgIUyRQPsRvGoPSg6vEFUc%2Ba4bAB5ihkS1m10saj0kQXjhVfHfL9LlRK7O0pyDgBYMCPZ2fkxD5nt5SQSW%2F6CttBhNZYBb53jeK3sXZhU91NAWRzHuzju%2BGRxsqajGhM%3D';
+	'https://icecube-eu-400.icedrive.io/download?p=MnSk2abKNsFjgmAGfPMm86b6LdMAQT%2Fspnbpw%2FDAnspVO%2FTVuhUYMJXP2wLrz5%2BYPVsq5nFmW45fJYfx4eVh%2Fq%2BBg8%2FvsEwKG%2BPHDz7irgtQCf1xwDksNbgysjHGWZnjamBCp89fyhHFJppeYb2CFq6UZZsaa%2B802P1EdNXfWg2z1Tf2fXm9KxFARRq9HWoDcAFgUkl0xXy9A3mFSwMstQ%3D%3D';
+      // 'https://icecube-eu-308.icedrive.io/download?p=kc3xXWFiEQ4C%2FkkobqK%2Brioh2fUdrXAACye3eIuK%2Fhr%2F%2BQCcxwpj3wbAw7U0EQ7vTLGkaea1J3G8NB7XL%2Bu0k0BoEZou37rULmgy5chA%2FvO2uM8eg2t%2Fwae8%2FGJB9sFLw0xSfzs%2F4bkuJvfRrWokcFTZ%2Bf1Pxv%2F5QHSFxDuAfoDQgIUyRQPsRvGoPSg6vEFUc%2Ba4bAB5ihkS1m10saj0kQXjhVfHfL9LlRK7O0pyDgBYMCPZ2fkxD5nt5SQSW%2F6CttBhNZYBb53jeK3sXZhU91NAWRzHuzju%2BGRxsqajGhM%3D';
 const ADMINPIN = '555';
 let isFullScreen = false;
 let username;
