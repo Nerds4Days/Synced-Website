@@ -10,7 +10,7 @@ const barContainer = document.querySelector('.slider');
 const sliderBtn = document.querySelector('.slider-btn');
 // GLOBAL VARIABLES
 const VIDEO_SRC =
-    	'https://ice-eu-52663.icedrive.io/download?p=AjY.wgha0_Wde_Tebi6P2d0W7_cLmpJg3SuelHqhXJazbPIQr8.BzVvdhUm4lFxGYrxH1ZR019C0LRPJEDmuFzP9HaX5FJkOLaBh6zubB1usN3Kn9y7wkjQ91Jm9mqfeMQk1ppBWJwYHty9Enur3QRMIyy.hamKGG3aHgEcdaAjm9pfTzXqRRKmtc13tindiR_QO6nOO.9ZwgeyECAERNpJJDG_8Y42rsh7R41Qqm6A-';
+    	'https://ia803409.us.archive.org/29/items/jujutsu-kaisen-tv-1_202103/jujutsu-kaisen-tv-1.mp4';
 const ADMINPIN = '555';
 let isFullScreen = false;
 let username;
