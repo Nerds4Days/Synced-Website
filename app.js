@@ -12,7 +12,7 @@ const messages = [];
 app.use(express.static(path.join(__dirname, 'public')));
 // Start server on port 3000
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 8080
 
 http.listen(PORT, () => console.log(`listening on *:${PORT}`));
 
